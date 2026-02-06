@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Roshan ❤️ Santoshi</title>
+
+<style>
+
+body{
+background:linear-gradient(black,#140000);
+color:white;
+text-align:center;
+font-family:Georgia;
+padding-top:70px;
+overflow:hidden;
+}
+
+h1{
+color:gold;
+font-size:2.7rem;
+}
+
+h2{
+color:#ff4d6d;
+margin-top:-10px;
+}
+
+#timer{
+font-size:1.5rem;
+margin-top:25px;
+line-height:2;
+}
+
+img{
+width:270px;
+border-radius:20px;
+margin-top:30px;
+box-shadow:0 0 40px red;
+}
+
+/* glowing heart animation */
+
+.heart{
+position:fixed;
+color:red;
+font-size:20px;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);}
+100%{transform:translateY(110vh);}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 id="title"></h1>
+
+<h2>
+ROSHAN ❤️ SANTOSHI
+</h2>
+
+<div id="timer"></div>
+
+<img src="photo.jpg">
+
+<script>
+
+// ❤️ Relationship Start Date
+const startDate = new Date("2019-02-06T00:00:00");
+
+function updateTimer(){
+
+const now = new Date();
+let diff = now - startDate;
+
+// calculations
+const secondsTotal = Math.floor(diff/1000);
+
+const years = Math.floor(secondsTotal / (365.25*24*60*60));
+const months = Math.floor(secondsTotal / (30.44*24*60*60));
+const weeks = Math.floor(secondsTotal / (7*24*60*60));
+const days = Math.floor(secondsTotal / (24*60*60));
+
+const hours = Math.floor((secondsTotal % (24*60*60))/(60*60));
+const minutes = Math.floor((secondsTotal % (60*60))/60);
+const seconds = secondsTotal % 60;
+
+
+// 🎉 Anniversary Check
+if(now.getDate()===6 && now.getMonth()===1){
+
+document.getElementById("title").innerHTML =
+`🎉 Happy ${years} Year Anniversary ❤️`;
+
+}else{
+
+document.getElementById("title").innerHTML =
+"Our Love Timer ❤️";
+
+}
+
+
+// Timer Display
+document.getElementById("timer").innerHTML=`
+
+${years} Years ❤️ <br>
+${months} Months ❤️ <br>
+${weeks} Weeks ❤️ <br>
+${days} Days ❤️ <br><br>
+
+${hours} Hours : 
+${minutes} Minutes : 
+${seconds} Seconds
+
+`;
+
+}
+
+setInterval(updateTimer,1000);
+updateTimer();
+
+
+// ❤️ Falling Hearts
+
+function createHeart(){
+
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),6000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
